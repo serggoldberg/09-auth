@@ -1,5 +1,6 @@
 import css from './Header.module.css';
 import Link from 'next/link';
+import AuthNavigation from '../AuthNavigation/AuthNavigation';
 
 export default function AppHeader() {
   return (
@@ -12,9 +13,10 @@ export default function AppHeader() {
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/notes/filter/all">Notes</Link>
-          </li>
+          </li> */}
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
