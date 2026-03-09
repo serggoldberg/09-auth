@@ -3,17 +3,21 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { register, RegisterRequest } from '@/lib/api/clientApi';
 import { ApiError } from '@/app/api/api';
+import { useAuthStore } from '@/lib/store/authStore';
 import css from './SignUpPage.module.css';
 
 export default function SignUpPage() {
   const router = useRouter();
   const [error, setError] = useState('');
+  const setUser = useAuthStore(state => state.setUser);
 
   const handleSubmit = async (formData: FormData) => {
     try {
       const formValues = Object.fromEntries(formData) as RegisterRequest;
       const response = await register(formValues);
+
       if (response) {
+        setUser(response); // сохраняем пользователя в глобальном store
         router.push('/profile');
       } else {
         setError('Invalid email or password');
@@ -30,6 +34,7 @@ export default function SignUpPage() {
   return (
     <main className={css.mainContent}>
       <h1 className={css.formTitle}>Sign up</h1>
+
       <form className={css.form} action={handleSubmit}>
         <div className={css.formGroup}>
           <label htmlFor="email">Email</label>
