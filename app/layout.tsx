@@ -5,6 +5,7 @@ import './globals.css';
 import AppHeader from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'Note Hub',
@@ -43,10 +44,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <TanStackProvider>
-          <AppHeader />
-          {children}
-          {modal}
-          <Footer />
+          <AuthProvider>
+            <AppHeader />
+            {children}
+            {modal}
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>

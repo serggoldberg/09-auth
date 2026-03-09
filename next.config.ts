@@ -1,12 +1,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  reactStrictMode: true,
   images: {
-    remotePatterns: {
-      [{hostname: 'ac.goit.global'}],
-    },
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ac.goit.global',
+      },
+    ],
   },
 };
 

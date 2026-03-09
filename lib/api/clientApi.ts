@@ -49,3 +49,46 @@ export const register = async (data: RegisterRequest): Promise<User> => {
   const response = await nextServer.post<User>('/auth/register', data);
   return response.data;
 };
+
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
+
+export const login = async (data: LoginRequest): Promise<User> => {
+  const response = await nextServer.post<User>('/auth/login', data);
+  return response.data;
+};
+
+export const logout = async (): Promise<void> => {
+  await nextServer.post('/auth/logout');
+};
+
+/* type CheckSessionRequest = {
+  success: boolean;
+}; */
+
+export const checkSession = async (): Promise<User | null> => {
+  try {
+    const { data } = await nextServer.get<User>('/auth/session');
+    return data ?? null;
+  } catch {
+    return null;
+  }
+};
+
+export const getMe = async () => {
+  const { data } = await nextServer.get<User>('/users/me');
+  return data;
+};
+
+export interface UpdateUserRequest {
+  username?: string;
+  email?: string;
+  avatar?: string;
+}
+
+export const updateMe = async (payload: UpdateUserRequest): Promise<User> => {
+  const { data } = await nextServer.patch<User>('/users/me', payload);
+  return data;
+};
