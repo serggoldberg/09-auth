@@ -9,7 +9,7 @@ import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
 
-import css from './NotesClient.module.css';
+import css from './NotesPage.module.css';
 
 interface NotesByTagClientProps {
   tag: string | undefined;
