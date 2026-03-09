@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 /* import * as Yup from 'yup'; */
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createNote } from '@/lib/api';
-import type { NewNote } from '@/lib/api';
+import { createNote } from '@/lib/api/clientApi';
+import type { NewNote } from '@/lib/api/clientApi';
 
 import css from './NoteForm.module.css';
 import { useNoteDraftStore } from '@/lib/store/noteStore';
