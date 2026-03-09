@@ -12,7 +12,7 @@ import Pagination from '@/components/Pagination/Pagination';
 import css from './NotesClient.module.css';
 
 interface NotesByTagClientProps {
-  tag?: string;
+  tag: string | undefined;
 }
 
 function NotesByTagClient({ tag }: NotesByTagClientProps) {
